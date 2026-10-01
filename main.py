@@ -1,8 +1,8 @@
-from game.game_engine import GameEngine
+from game import Game
 
-if __name__ == "__main__":
-    game = GameEngine()
+if __name__ == '__main__':
+    app = Game()
     try:
-        game.run()
+        app.run()
     finally:
-        game.shutdown()
+        app.close()
