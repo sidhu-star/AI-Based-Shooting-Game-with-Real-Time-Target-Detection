@@ -1,7 +1,12 @@
-YOLO model directory.
+# Custom YOLO model
 
-If yolo11n.pt is not present, Ultralytics will load the pretrained model and may download it on first run.
+The repository supports a custom target class.
 
-For a custom target detector, place the trained .pt model here and update YOLO_MODEL in config.py.
+Train with:
 
-Large .pt model files are ignored by Git.
+python scripts/generate_dataset.py
+python train.py
+
+After training, copy runs/target_detector/weights/best.pt to models/target.pt and set YOLO_MODEL = 'models/target.pt' in config.py.
+
+The generated dataset is synthetic and intended to verify the training pipeline. For a stronger detector, collect varied real webcam images and annotate them with YOLO labels.
