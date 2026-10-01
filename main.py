@@ -1,8 +1,8 @@
-from game import Game
+from app import Game
 
 if __name__ == '__main__':
-    app = Game()
+    game = Game()
     try:
-        app.run()
+        game.run()
     finally:
-        app.close()
+        game.close()
