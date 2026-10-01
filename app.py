@@ -18,7 +18,8 @@ class Game:
         self.cap=cv2.VideoCapture(CAMERA_INDEX)
         self.cap.set(cv2.CAP_PROP_FRAME_WIDTH,640); self.cap.set(cv2.CAP_PROP_FRAME_HEIGHT,480)
         if not self.cap.isOpened(): raise RuntimeError("Webcam could not be opened.")
-        self.model=YOLO(YOLO_MODEL)
+        model_path = Path(YOLO_MODEL)
+        self.model = YOLO(str(model_path) if model_path.exists() else 'yolo11n.pt')
         self.running=True; self.started=False; self.finished=False
         self.level=1; self.score=0; self.hits=0; self.misses=0; self.combo=0; self.best_combo=0
         self.target=(450,390); self.start_time=0; self.detections=[]; self.fps=0; self.flash=""; self.flash_until=0
